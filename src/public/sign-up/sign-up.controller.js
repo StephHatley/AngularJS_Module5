@@ -24,7 +24,7 @@ function SignUpController($http, ApiPath, SignUpService) {
     console.log(user);
     $http({
       method: 'GET',
-      url: ApiPath + '/menu_items/'+ user.menuItemSelection +'.json'
+      url: ApiPath + '/menu_items/'+ user.menuItemSelection.short_name +'.json'
     }).then(function successCallback(response){
       console.log(response.data);
       doesNotExist = false;
