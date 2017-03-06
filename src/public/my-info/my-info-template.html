@@ -1,0 +1,29 @@
+<div class="container">
+  <div ng-if="myInfoCtrl.checkUser() === false">
+    <span><h2>Not Signed Up Yet. </h2></span>
+    <span><h2 ui-sref="public.signup" class="signup">Sign up now!<h2></span>
+  </div>
+  <div ng-if="myInfoCtrl.checkUser() === true">
+  <h2> Your Information: </h2>
+ <div>{{myInfoCtrl.currentUser.username}}</div>
+ <div>{{myInfoCtrl.currentUser.email}}</div>
+ <div>{{myInfoCtrl.currentUser.phone}}</div>
+ <br>
+ <div class="menu-item-tile col-md-6" ng-if="myInfoCtrl.currentUser.menuItem() !='[]'">
+   <div class="row">
+     <div class="col-sm-5">
+       <div class="menu-item-photo">
+         <div>{{myInfoCtrl.currentUser.menuItemSelection.short_name}}</div>
+         <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.currentUser.menuItemSelection.short_name}}.jpg" alt="{{myInfoCtrl.currentUser.menuItemSelection.name}}">
+       </div>
+       <div class="menu-item-price">{{myInfoCtrl.currentUser.menuItemSelection.price_small | currency}}<span> {{myInfoCtrl.currentUser.menuItemSelection.small_portion_name}}</span> {{myInfoCtrl.currentUser.menuItemSelection.price_large | currency}} <span>{{$ctrl.menuItem.large_portion_name}}</span></div>
+     </div>
+     <div class="menu-item-description col-sm-7">
+       <h3 class="menu-item-title">{{myInfoCtrl.currentUser.menuItemSelection.name}}</h3>
+       <p class="menu-item-details">{{myInfoCtrl.currentUser.menuItemSelection.description}}</p>
+     </div>
+   </div>
+   <hr class="visible-xs">
+ </div>
+</div>
+</div>

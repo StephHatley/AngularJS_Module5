@@ -45,16 +45,19 @@ function routeConfig ($stateProvider) {
       url: '/signup',
       templateUrl: 'src/public/sign-up/sign-up.template.html',
       controller: 'SignUpController',
-      controllerAs: 'signUpCtrl'
-    //  resolve: {
-    //    selectedItem: ['$stateParams', "SignUpService", function ($stateParams, SignUpService){
-    //      return SignUpService.GetMenuItem($stateParams.selection);
-    //    }]
-    //  }
+      controllerAs: 'signUpCtrl',
+      service: 'SignUpService'
     })
-    .state('public.myinfo',{
+    .state('public.myinfo', {
       url: '/myinfo',
-      templateUrl: 'src/public/my-info/my-info-template.html'
+      templateUrl: 'src/public/my-info/my-info-template.html',
+      controller: 'MyInfoController',
+      controllerAs: 'myInfoCtrl',
+      resolve: {
+        currentUser: ['SignUpService', function(SignUpService) {
+          return SignUpService.GetCurrentUser();
+        }]
+      }
 
     });
 }

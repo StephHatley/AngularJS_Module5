@@ -187,6 +187,8 @@ h3.menu-item-title {
 /******* input form ********/
 .inputInfo {
 background-color: #000;
+}
 
-
+.signup {
+  text-decoration: underline;
 }

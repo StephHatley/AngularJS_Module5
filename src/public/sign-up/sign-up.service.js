@@ -1,28 +1,25 @@
 (function(){
-'use strict';
+"use strict";
 
 angular.module('public')
 .service('SignUpService', SignUpService);
 
-SignUpService.inject = ['$http', 'ApiPath']
+SignUpService.$inject = ['$http', 'ApiPath']
 function SignUpService($http, ApiPath) {
 var service = this;
 
 var listOfUsers = [];
+var currentUser = null;
 
-service.GetMenuItem = function(selection) {
-  return $http.get(ApiPath + '/menu_items/'+ selection +'.json').then(function (response) {
-    console.log(response);
-    return response.data;
-  });
 
+service.AddUser = function(newUser){
+  listOfUsers.push(newUser);
+  currentUser = newUser;
 };
 
-service.AddUser = function(name, email, phone, selection){
-
-
-}
-
+service.GetCurrentUser = function(){
+  return currentUser;
+};
 
 };
 
